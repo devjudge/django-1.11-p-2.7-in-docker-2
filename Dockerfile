@@ -1,4 +1,4 @@
-FROM python:2.7-slim
+FROM python:2.7-buster
 
 EXPOSE 8080
 
@@ -7,6 +7,9 @@ ARG workspace="none"
 RUN apt-get update \
     && apt-get install --assume-yes wget bash-completion unzip
 
+RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/python/pre-build.sh
+RUN chmod 775 ./pre-build.sh
+RUN sh pre-build.sh
 
 RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/database/db-setup.sh
 RUN chmod 775 ./db-setup.sh
@@ -51,6 +54,6 @@ RUN sh build.sh
 ADD . .
 
 # Run the app
-RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/python/run.sh
-RUN chmod 775 ./run.sh
-CMD sh run.sh
+RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/python/django/run-2.sh
+RUN chmod 775 ./run-2.sh
+CMD sh run-2.sh
