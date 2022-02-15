@@ -7,3 +7,7 @@ ports:
   - port: 8080
     onOpen: ignore
     visibility: public
+
+vscode:
+  extensions:
+    - ms-python.python
